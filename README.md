@@ -18,7 +18,7 @@ Images: Pro:
 Landmarks: Pro:
             Almost always correct recognition.
            Contra:
-           Limitation of 9 Commmands.
+           Limitation of 9 Commmands.*note from my future self:9? you mean 512...
            
 
 
