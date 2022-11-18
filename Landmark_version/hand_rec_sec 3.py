@@ -84,7 +84,7 @@ def main():
     mp_hands = mp.solutions.hands
     hands = mp_hands.Hands(
         max_num_hands=2,
-        min_detection_confidence=0.8,
+        min_detection_confidence=0.9,
         min_tracking_confidence=0.8,
     )
 
@@ -105,7 +105,7 @@ def main():
     while True:
         fps = cvFpsCalc.get()
         key = cv.waitKey(1)
-        #uccess, image = cap.read()
+        #success, image = cap.read()
 
         # Camera capture
         image = Drone.get_frame_read().frame
@@ -115,7 +115,6 @@ def main():
 
         image = cv.flip(image, 1)  # Mirror display
         debug_image = copy.deepcopy(image)
-        cv.imshow('frame', image)
 
         # Detection implementation
         image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
@@ -170,6 +169,7 @@ def main():
                 # Drawing part
 
             if Cnt >= 50:
+                print(f" Battery : {Drone.get_battery()}")
                 # print(HandSignList)
                 print(tuple(HandSignList))
                 Cnt = 0
@@ -188,7 +188,7 @@ def main():
                     match tuple(HandSignList):
 
                         # 1_land
-                        case ('0L', '0R'):
+                        case ('8L', '5R'):
                             print("land")
                             cv.imshow("Order", LAND_RESIZED)
                             Drone.land()
@@ -199,7 +199,7 @@ def main():
                         case('0L', '1R'):
                             print("Right")
                             cv.imshow("Order", RIGHT_RESIZED)
-                            Drone.send_rc_control(100, 0, 0, 0)
+                            Drone.send_rc_control(-100, 0, 0, 0)
                             time.sleep(0.5)
                             Drone.send_rc_control(0, 0, 0, 0)
 
@@ -207,7 +207,7 @@ def main():
                         case('0L', '2R'):
                             print("Left")
                             cv.imshow("Order", LEFT_RESIZED)
-                            Drone.send_rc_control(-100, 0, 0, 0)
+                            Drone.send_rc_control(100, 0, 0, 0)
                             time.sleep(0.5)
                             Drone.send_rc_control(0, 0, 0, 0)
 
@@ -251,10 +251,10 @@ def main():
                             time.sleep(0.5)
 
                         # 10_flip(b)
-                        case ('6L', '4R'):
+                        case ('6L', '3R'):
                             print("flip")
                             cv.imshow("Order", FLIP_RESIZED)
-                            Drone.flip_back()
+                            Drone.flip_forward()
                             time.sleep(0.5)
 
                         # 11 FLIP MAYHEM
@@ -262,13 +262,13 @@ def main():
                             print("flip")
                             cv.imshow("Order", FLIP_RESIZED)
                             Drone.flip_forward()
-                            time.sleep(0.2)
+                            time.sleep(0.5)
                             Drone.flip_right()
-                            time.sleep(0.2)
+                            time.sleep(0.5)
                             Drone.flip_back()
-                            time.sleep(0.2)
+                            time.sleep(0.5)
                             Drone.flip_left()
-                            time.sleep(0.2)
+                            time.sleep(0.5)
                             Drone.flip_forward()
 
         debug_image = draw_info(debug_image, fps, mode, number)
@@ -291,7 +291,7 @@ def main():
             time.sleep(0.5)
             Drone.send_rc_control(0, 0, 0, 0)
 
-        if key == ord("U"):
+        if key == ord("u"):
             Drone.send_rc_control(0, 0, -100, 0)
             time.sleep(0.5)
             Drone.send_rc_control(0, 0, 0, 0)
