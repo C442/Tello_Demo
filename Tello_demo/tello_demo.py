@@ -112,6 +112,7 @@ def main():
             Drone.streamoff()
             cv.destroyAllWindows()
             break
+        
 
         # success, image = cap.read()
 
@@ -235,7 +236,7 @@ def flight_evaluation(correctly_formated_handsign_list):
     if not Drone.is_flying:
         match correctly_formated_handsign_list:
             # 2_takeoff
-            case ['6L', '6R'] | ['', '1R']:
+            case['6L', '6R'] | ['', '1R']:
                 print("takeoff")
                 cv.imshow("Order", TAKEOFF_RESIZED)
                 Drone.takeoff()
@@ -244,7 +245,7 @@ def flight_evaluation(correctly_formated_handsign_list):
     if Drone.is_flying:
         match correctly_formated_handsign_list:
             # 1_land
-            case ['8L', '5R']:
+            case['8L', '5R']:
                 print("land")
                 cv.imshow("Order", LAND_RESIZED)
                 Drone.land()
@@ -266,7 +267,7 @@ def flight_evaluation(correctly_formated_handsign_list):
                 Drone.send_rc_control(0, 0, 0, 0)
 
             # 5_up
-            case ['1L', '6R']:
+            case['1L', '6R']:
                 print("Up")
                 cv.imshow("Order", UP_RESIZED)
                 Drone.send_rc_control(0, 0, 100, 0)
@@ -274,7 +275,7 @@ def flight_evaluation(correctly_formated_handsign_list):
                 Drone.send_rc_control(0, 0, 0, 0)
 
             # 6_down
-            case ['1L', '7R']:
+            case['1L', '7R']:
                 print("Down")
                 cv.imshow("Order", DOWN_RESIZED)
                 Drone.send_rc_control(0, 0, -100, 0)
@@ -282,7 +283,7 @@ def flight_evaluation(correctly_formated_handsign_list):
                 Drone.send_rc_control(0, 0, 0, 0)
 
             # 7_forwards
-            case ['0L', '4R']:
+            case['0L', '4R']:
                 print("forwards")
                 cv.imshow("Order", FORWARDS_RESIZED)
                 Drone.send_rc_control(0, 100, 0, 0)
@@ -290,7 +291,7 @@ def flight_evaluation(correctly_formated_handsign_list):
                 Drone.send_rc_control(0, 0, 0, 0)
 
             # 8_backwards
-            case ['0L', '5R']:
+            case['0L', '5R']:
                 print("backwards")
                 cv.imshow("Order", BACKWARDS_RESIZED)
                 Drone.send_rc_control(0, -100, 0, 0)
@@ -298,21 +299,21 @@ def flight_evaluation(correctly_formated_handsign_list):
                 Drone.send_rc_control(0, 0, 0, 0)
 
             # 9_flip(a)
-            case ['0L', '3R']:
+            case['0L', '3R']:
                 print("flip")
                 cv.imshow("Order", FLIP_RESIZED)
                 Drone.flip_back()
                 time.sleep(0.5)
 
             # 10_flip(b)
-            case ['6L', '3R']:
+            case['6L', '3R']:
                 print("flip")
                 cv.imshow("Order", FLIP_RESIZED)
                 Drone.flip_forward()
                 time.sleep(0.5)
 
             # 11 FLIP MAYHEM
-            case ['8L', '2R']:
+            case['8L', '2R']:
                 print("flip")
                 cv.imshow("Order", FLIP_RESIZED)
                 Drone.flip_forward()
