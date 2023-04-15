@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # The documents this code is built upon can be found on Git hub: https://github.com/kinivi/hand-gesture-recognition-mediapipe by Kinivi. I would recommend his program further since it is easy to modify and can be used in other ways too.
-# This is an improved sketch for controlling a drone with handgestures. Now, it uses a handcombination (position1, position2) to identify commands.
-# It is more childfriendly+ can have more commands now(around 500)
+# This is an improved sketch for controlling a drone with handgestures.
 
 # -*- coding: utf-8 -*-
 import csv
