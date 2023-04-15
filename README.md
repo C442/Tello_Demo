@@ -1,28 +1,14 @@
-Tello_Demo
+Tello handgesture recognition
 
+This sketch is used to connect to a tello drone and make it fly with different handgestures.
 
-USE Landmark_version for Demo
-I added a pdf. document for the possible commands to give.
+It has been written by Mayers Christophe, based on the extremely dynamic handsign recognition model of Kinvi(https://github.com/kinivi/hand-gesture-recognition-mediapipe). Thank you.
 
-This project aimed to create a tello drone which can follow orders in real time.
+To be able to use it, I recommend downloading following libraries:
+csv,copy, argparse, itertools, time, cv2, numpy, mediapipe and djitellopy. 
 
+Downloading and running the "tello_demo" script from the "Tello_Demo" ordner should be sufficient. I added a pdf of all the current commands there are. 
 
-For now, this project has 3 operatable sketches with 2 different approaches: One with images and one with landmarks which is a script I modified based on another one's.
+As I have no decades of experience, I am sure you will find some kind of mistakes. I am always open for suggestions of any kind.
 
-
-Images: Pro:
-            It can have as many commands as desired.
-        Contra:
-            Hand recognition fails quite often and wrong commands are given.
-
-Landmarks: Pro:
-            Almost always correct recognition.
-           Contra:
-           Limitation of 9 Commmands.*note from my future self:9? you mean 512...
-           
-
-
-
-
-
-
+It is planned to make this script work for ROS2, to add face tracking and switch from tello camera to computer facecam.
