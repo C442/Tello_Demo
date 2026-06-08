@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 from djitellopy import tello
+#kommetar
 
 
 from utils import CvFpsCalc
